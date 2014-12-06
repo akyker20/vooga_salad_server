@@ -1,6 +1,6 @@
 from django.db import models
-from jsonfield import JSONField
 
 class Game(models.Model):
-  	master_json = JSONField()
-  	secondary_json = JSONField()
+	game_directory = models.CharField(max_length=256)
+  	master_json = models.TextField(null=True, blank=True)
+  	secondary_json = models.TextField(null=True, blank=True)
