@@ -1,0 +1,1 @@
+web: gunicorn voogasalad.wsgi --log-file -
