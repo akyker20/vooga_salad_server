@@ -1,6 +1,7 @@
 import json as simplejson
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from voogasalad.models import Game
 
 def make_game(request):
 	if request.method == 'POST':
