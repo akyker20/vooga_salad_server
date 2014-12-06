@@ -88,6 +88,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
+STATIC_URL = '/static/'
+
 
 try:
     from local_settings import *
