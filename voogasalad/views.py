@@ -13,6 +13,21 @@ def get_master_json(request):
 	current_game = Game.objects.last()
 	return HttpResponse(current_game.master_json)
 
+def get_and_clear_new_towers(request):
+	current_game = Game.objects.last()
+	secondary_json = current_game.secondary_json
+	current_game.secondary_json = ""
+	current_game.save()
+	return HttpResponse(secondary_json)
+
+def update_secondary_json(request):
+	if request.method == 'POST':
+		secondary_json = request.POST['new_towers']
+		current_game = Game.objects.last()
+		current_game.secondary_json = secondary_json
+		current_game.save()
+		return HttpResponse("Success")
+
 def update_master_json(request):
 	if request.method == 'POST':
 		master_json = request.POST['master_json']
