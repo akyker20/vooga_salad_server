@@ -6,11 +6,9 @@ from voogasalad.models import Game
 def make_game(request):
 	print 'hello there'
 	if request.method == 'POST':
-		print 'hi'
 		game_dir = request.POST['game_directory']
-		print 'hi2'
 		game = Game.objects.create(game_directory=game_dir)
-		print 'hi3'
+		return HttpResponse("Success")
 
 def get_master_json(request):
 	current_game = Game.objects.last()
@@ -23,3 +21,4 @@ def update_master_json(request):
 		current_game = Game.objects.last()
 		current_game.master_json = master_json
 		current_game.save()
+		return HttpResponse("Success")
