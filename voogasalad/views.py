@@ -4,9 +4,13 @@ from django.http import HttpResponse
 from voogasalad.models import Game
 
 def make_game(request):
+	print 'hello there'
 	if request.method == 'POST':
+		print 'hi'
 		game_dir = request.POST['game_directory']
+		print 'hi2'
 		game = Game.objects.create(game_directory=game_dir)
+		print 'hi3'
 
 def get_master_json(request):
 	current_game = Game.objects.last()
