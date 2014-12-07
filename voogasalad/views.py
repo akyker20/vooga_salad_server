@@ -13,6 +13,14 @@ def post_message(request):
 		current_game.message_set.create(content=request.POST['message'])
 		return HttpResponse("Success")
 
+def get_messages(request, index):
+	current_game = Game.objects.last()
+	messages = current_game.message_set.filter(id__gt=int(index))
+	result = ""
+	for message in messages:
+		result = "{} {} \n".format(result, message.content)
+	return HttpResponse(result)
+
 def join_game(request):
 	current_game = Game.objects.last()
 	current_game.num_players += 1

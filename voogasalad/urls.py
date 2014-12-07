@@ -13,4 +13,5 @@ urlpatterns = patterns('',
     url(r'^get_num_players', 'voogasalad.views.get_num_players'),
     url(r'^join_game', 'voogasalad.views.join_game'),
     url(r'^post_message', 'voogasalad.views.post_message'),
+    url(r'^get_messages/(?P<index>\d+)', 'voogasalad.views.get_messages')
 )
