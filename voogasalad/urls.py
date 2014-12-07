@@ -10,4 +10,6 @@ urlpatterns = patterns('',
     url(r'^get_master_json', 'voogasalad.views.get_master_json'),
     url(r'^update_master_json', 'voogasalad.views.update_master_json'),
     url(r'^make_game', 'voogasalad.views.make_game'),
+    url(r'^get_num_players', 'voogasalad.views.get_num_players'),
+    url(r'^join_game', 'voogasalad.views.join_game')
 )

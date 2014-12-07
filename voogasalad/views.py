@@ -3,6 +3,16 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from voogasalad.models import Game
 
+def get_num_players(request):
+	current_game = Game.objects.last()
+	return HttpResponse(current_game.num_players)
+
+def join_game(request):
+	current_game = Game.objects.last()
+	current_game.num_players += 1
+	current_game.save()
+	return HttpResponse(current_game.game_directory)
+
 def make_game(request):
 	if request.method == 'POST':
 		game_dir = request.POST['game_directory']
