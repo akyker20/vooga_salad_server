@@ -16,7 +16,9 @@ def join_game(request):
 def make_game(request):
 	if request.method == 'POST':
 		game_dir = request.POST['game_directory']
+		print 'h1'
 		game = Game.objects.create(game_directory=game_dir)
+		print 'hello'
 		return HttpResponse("Success")
 
 def get_master_json(request):
