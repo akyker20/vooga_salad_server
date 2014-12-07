@@ -5,3 +5,7 @@ class Game(models.Model):
 	num_players = models.IntegerField(default=1)
   	master_json = models.TextField(null=True, blank=True)
   	secondary_json = models.TextField(null=True, blank=True)
+
+class Message(models.Model):
+	game = models.ForeignKey(Game)
+	content = models.CharField(max_length=256)

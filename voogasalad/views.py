@@ -7,6 +7,10 @@ def get_num_players(request):
 	current_game = Game.objects.last()
 	return HttpResponse(current_game.num_players)
 
+def post_message(request):
+	current_game = Game.objects.last()
+	current_game.message_set.create(content=request.POST['message'])
+
 def join_game(request):
 	current_game = Game.objects.last()
 	current_game.num_players += 1
