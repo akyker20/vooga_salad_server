@@ -16,9 +16,10 @@ def post_message(request):
 def get_messages(request, index):
 	current_game = Game.objects.last()
 	messages = current_game.message_set.filter(id__gt=int(index))
-	result = ""
+	final_index = messages.last().id
+	result = "{}_".format(final_index)
 	for message in messages:
-		result = "{} {} \n".format(result, message.content)
+		result = "{}:::{}".format(result, message.content)
 	return HttpResponse(result)
 
 def join_game(request):
