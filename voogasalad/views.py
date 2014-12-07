@@ -16,7 +16,8 @@ def post_message(request):
 def get_messages(request, index):
 	current_game = Game.objects.last()
 	messages = current_game.message_set.filter(id__gt=int(index))
-	if messages.count > 0:
+	print messages.count()
+	if messages.count() > 0:
 		final_index = messages.last().id
 		result = final_index
 		for message in messages:
