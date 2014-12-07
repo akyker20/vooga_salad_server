@@ -17,7 +17,7 @@ def get_messages(request, index):
 	current_game = Game.objects.last()
 	messages = current_game.message_set.filter(id__gt=int(index))
 	final_index = messages.last().id
-	result = "{}~".format(final_index)
+	result = final_index
 	for message in messages:
 		result = "{}~{}".format(result, message.content)
 	return HttpResponse(result)
