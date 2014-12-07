@@ -10,16 +10,19 @@ def get_num_players(request):
 def post_message(request):
 	if request.method == 'POST':
 		current_game = Game.objects.last()
-		current_game.message_set.create(content=request.POST['message'])
-		return HttpResponse("Success")
+		message = current_game.message_set.create(content=request.POST['message'])
+		return HttpResponse(message.id)
 
 def get_messages(request, index):
 	current_game = Game.objects.last()
 	messages = current_game.message_set.filter(id__gt=int(index))
-	final_index = messages.last().id
-	result = final_index
-	for message in messages:
-		result = "{}~{}".format(result, message.content)
+	if messages.count > 0:
+		final_index = messages.last().id
+		result = final_index
+		for message in messages:
+			result = "{}~{}".format(result, message.content)
+	else:
+		result = "None"
 	return HttpResponse(result)
 
 def join_game(request):
